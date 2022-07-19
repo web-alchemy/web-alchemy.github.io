@@ -1,7 +1,0 @@
-<ul class="articles-preview-list {{ className ? className : '' }}" role="list">
-  @each(item in items)
-    <li class="articles-preview-list__item">
-      {{{ await $slots.main(item) }}}
-    </li>
-  @endeach
-</ul>
