@@ -1,0 +1,18 @@
+<header class="header {{ classes }}">
+  @!logo({ className: 'header__logo' })
+
+  @!nav({
+    className: 'header__nav',
+    currentLink: false,
+    items: [
+      {
+        link: '/articles/',
+        text: 'Публикации'
+      },
+      {
+        link: '/about/',
+        text: 'О сайте'
+      },
+    ]
+  })
+</header>

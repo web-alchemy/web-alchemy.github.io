@@ -1,0 +1,19 @@
+<article class="article-preview">
+  <h3 class="article-preview__title title title_level_3">
+    <a class="article-preview__link" href="{{ link }}">
+      {{ title }}
+    </a>
+  </h3>
+  <time class="article-preview__date">
+    {{ date }}
+  </time>
+  @if(categories?.length > 0)
+    <ul class="article-preview__categories">
+      @each(category in categories)
+        <li>
+          <span class="tag">{{ category.data.name }}</span>
+        </li>
+      @endeach
+    </ul>
+  @endif
+</article>

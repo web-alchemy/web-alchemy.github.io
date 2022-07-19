@@ -1,0 +1,9 @@
+@set(
+  'classes',
+  ['theme'].concat(
+    Object.entries($props.all())
+      .map(([key, value]) => `theme_${key}_${value}`)
+  ).join(' ')
+)
+
+{{{ await $slots.main({ classes }) }}}

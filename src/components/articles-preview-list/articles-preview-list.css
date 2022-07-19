@@ -1,0 +1,14 @@
+.articles-preview-list {
+  --_max-gap: 2;
+  --_min-gap: 1;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: grid;
+  gap:
+     calc(
+      var(--_min-gap) * 1rem + (var(--_max-gap) - var(--_min-gap)) * var(--fluid-ratio)
+    );
+}
+
+  .articles-preview-list__item {}

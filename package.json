@@ -1,0 +1,33 @@
+{
+  "name": "web-alchemy",
+  "scripts": {
+    "eleventy:dev": "NODE_ENV=development eleventy --serve",
+    "eleventy:build": "NODE_ENV=production eleventy",
+    "vite:dev": "NODE_ENV=development vite",
+    "vite:build": "NODE_ENV=production vite build",
+    "dev": "concurrently 'npm run vite:dev' 'npm run eleventy:dev'",
+    "build": "npm run vite:build && npm run eleventy:build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/web-alchemy/web-alchemy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/web-alchemy/web-alchemy/issues"
+  },
+  "homepage": "https://github.com/web-alchemy/web-alchemy#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^1.0.1",
+    "@web-alchemy/eleventy-plugin-edgejs": "^0.0.1",
+    "concurrently": "^7.3.0",
+    "edge-supercharged": "^3.1.1",
+    "edge.js": "^5.3.2",
+    "gulp": "^4.0.2",
+    "linkedom": "^0.14.12",
+    "remark-gfm": "^3.0.1",
+    "remark-parse": "^10.0.1",
+    "unified": "^10.1.2",
+    "vite": "^3.0.0"
+  }
+}

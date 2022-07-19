@@ -1,0 +1,6 @@
+.list {
+  margin: 0;
+  padding-inline-start: 1.5em;
+  display: grid;
+  grid-row-gap: 1em;
+}

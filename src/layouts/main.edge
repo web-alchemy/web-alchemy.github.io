@@ -1,0 +1,38 @@
+@theme({
+  color: 'default',
+  font: 'default',
+  type: 'default'
+})
+  @slot('main', scope)
+    @page({
+      title: pageTitle,
+      lang: defaultLang,
+      className: scope.classes
+    })
+      @slot('head')
+        <link rel="stylesheet" href="{{ entry('entries/styles/main.css') }}">
+        <link rel="alternate" type="application/rss+xml" href="{{ metaInfo.RSSLink }}">
+      @endslot
+
+      @slot('header', scope)
+        @header({ classes: scope.classes })
+        @endheader
+      @endslot
+
+      @slot('main', scope)
+        <main class="{{ scope.classes }}">
+          {{{ content }}}
+        </main>
+      @endslot
+
+      @slot('footer', scope)
+        @footer({
+          buildDate: metaInfo.buildDate,
+          RSSLink: metaInfo.RSSLink,
+          classes: scope.classes
+          })
+        @endfooter
+      @endslot
+    @endpage
+  @end
+@endtheme

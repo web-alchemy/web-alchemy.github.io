@@ -1,0 +1,30 @@
+.index-block {
+  margin-inline: auto;
+  max-width: var(--max-inline-size);
+  padding-inline: var(--padding, 1rem);
+}
+
+  .index-block__title {
+    margin-block-start: 0;
+    margin-block-end: clamp(1rem, 10%, 4rem);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-family: var(--font-mono);
+  }
+
+  .index-block__sub-title {
+    margin-block-start: 0;
+    margin-block-end: 2rem;
+    text-align: center;
+  }
+
+  .index-block__articles-list {}
+
+  .index-block__more-link {
+    margin: 1.5rem auto;
+    display: block;
+    max-width: 100%;
+    width: max-content;
+    font-size: var(--type-1);
+  }

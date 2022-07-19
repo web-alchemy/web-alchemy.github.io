@@ -1,0 +1,102 @@
+.theme {}
+
+  .theme_font_default {
+    --font-main: ui-system, BlinkMacSystemFont, -apple-system, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    --font-mono: ui-monospace, 'SF Mono', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Ubuntu Mono', 'Liberation Mono', 'Courier New', monospace;
+    --font-emoji: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'
+  }
+
+  .theme_color_default {
+    --hue: 40;
+    --saturation: 74%;
+    --color-link-base: 22deg 56% 47%;
+
+    --color-palette-1:  hsl(var(--hue), var(--saturation), 5%);
+    --color-palette-2:  hsl(var(--hue), var(--saturation), 15%);
+    --color-palette-3:  hsl(var(--hue), var(--saturation), 25%);
+    --color-palette-4:  hsl(var(--hue), var(--saturation), 35%);
+    --color-palette-5:  hsl(var(--hue), var(--saturation), 45%);
+    --color-palette-6:  hsl(var(--hue), var(--saturation), 55%);
+    --color-palette-7:  hsl(var(--hue), var(--saturation), 65%);
+    --color-palette-8:  hsl(var(--hue), var(--saturation), 75%);
+    --color-palette-9:  hsl(var(--hue), var(--saturation), 85%);
+    --color-palette-10: hsl(var(--hue), var(--saturation), 95%);
+
+    --color-main: var(--color-palette-1);
+    --color-canvas: var(--color-palette-9);
+  }
+
+  .theme_type_default {
+      --rem: (1rem / 16);
+
+    --min-viewport: 320;
+    --max-viewport: 1366;
+
+    --fluid-screen: clamp(var(--min-viewport) * var(--rem), 100vw, var(--max-viewport) * var(--rem));
+    --fluid-ratio: calc((var(--fluid-screen) - var(--min-viewport) * var(--rem)) / (var(--max-viewport) - var(--min-viewport)));
+
+    --type--2-start: 10;
+    --type--2-end: 14;
+    --type--2:
+        calc(
+          (var(--type--2-start) * var(--rem)) +
+          (var(--type--2-end) - var(--type--2-start)) * var(--fluid-ratio)
+        );
+
+    --type--1-start: 12;
+    --type--1-end: 16;
+    --type--1:
+        calc(
+          (var(--type--1-start) * var(--rem)) +
+          (var(--type--1-end) - var(--type--1-start)) * var(--fluid-ratio)
+        );
+
+    --type-0-start: 16;
+    --type-0-end: 20;
+    --type-0:
+        calc(
+          (var(--type-0-start) * var(--rem)) +
+          (var(--type-0-end) - var(--type-0-start)) * var(--fluid-ratio)
+        );
+
+    --type-1-start: 20;
+    --type-1-end: 24;
+    --type-1:
+        calc(
+          (var(--type-1-start) * var(--rem)) +
+          (var(--type-1-end) - var(--type-1-start)) * var(--fluid-ratio)
+        );
+
+    --type-2-start: 25;
+    --type-2-end: 28.80;
+    --type-2:
+        calc(
+          (var(--type-2-start) * var(--rem)) +
+          (var(--type-2-end) - var(--type-2-start)) * var(--fluid-ratio)
+        );
+
+    --type-3-start: 31.25;
+    --type-3-end: 34.56;
+    --type-3:
+        calc(
+          (var(--type-3-start) * var(--rem)) +
+          (var(--type-3-end) - var(--type-3-start)) * var(--fluid-ratio)
+        );
+
+    --type-4-start: 39.06;
+    --type-4-end: 41.47;
+    --type-4:
+        calc(
+          (var(--type-4-start) * var(--rem)) +
+          (var(--type-4-end) - var(--type-4-start)) * var(--fluid-ratio)
+        );
+
+    --type-5-start: 48.83;
+    --type-5-end: 49.77;
+    --type-5:
+        calc(
+          (var(--type-5-start) * var(--rem)) +
+          (var(--type-5-end) - var(--type-5-start)) * var(--fluid-ratio)
+        );
+
+  }

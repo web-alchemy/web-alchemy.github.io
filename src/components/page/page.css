@@ -1,0 +1,51 @@
+.page {
+  --max-container-size: calc(1920 / 16 * 1rem);
+  --max-inline-size: calc( 768 / 16 * 1rem);
+  --padding: 1rem;
+  overflow-y: scroll;
+  height: 100%;
+  line-height: 1.25;
+  font-family: var(--font-main, sans-serif);
+  -webkit-text-size-adjust: 100%;
+  color: var(--color-main);
+  background-color: var(--color-canvas);
+  scroll-behavior: smooth;
+}
+
+  .page__body {
+    overflow: hidden;
+    margin: 0 auto;
+    box-sizing: border-box;
+    min-height: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      'header'
+      'main'
+      'footer';
+    font-size: var(--type-0);
+  }
+
+  .page__header,
+  .page__footer {
+    --_page-margin: clamp(1rem, 10%, 10rem);
+    margin-inline: auto;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: var(--max-container-size);
+  }
+
+  .page__header {
+    grid-area: header;
+    margin-block-end: var(--_page-margin);
+  }
+
+  .page__main {
+    grid-area: main;
+  }
+
+  .page__footer {
+    grid-area: footer;
+    margin-block-start: var(--_page-margin);
+  }
