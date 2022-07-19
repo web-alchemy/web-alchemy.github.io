@@ -28,7 +28,7 @@ const articlesMixin = {
       return (new Date()).toUTCString()
     }
 
-    return articles[0].createdAt
+    return articles[0]?.createdAt
   }
 }
 

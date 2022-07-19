@@ -6,8 +6,9 @@
     <description>{{ description }}</description>
     <language>{{ metaInfo.defaultLang }}</language>
     <link>{{ metaInfo.siteBaseLink }}</link>
-    <lastBuildDate>{{ lastBuildDate }}</lastBuildDate>
-
+    @if(lastBuildDate)
+      <lastBuildDate>{{ lastBuildDate }}</lastBuildDate>
+    @endif
     @each(article in articles)
       <item>
         <guid>{{ metaInfo.siteBaseLink }}/{{ article.link }}</guid>
