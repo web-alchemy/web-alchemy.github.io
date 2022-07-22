@@ -1,13 +1,17 @@
 .block-code {
   --_padding: var(--padding, 1rem);
-  overflow: auto;
   font-size: 74%;
   white-space: pre-wrap;
-  background-color: var(--color-palette-10);
 }
 
   .block-code__content {
+    margin: auto;
+    overflow: auto;
+    resize: both;
     display: block;
     padding: var(--_padding);
+    width: var(--max-inline-size);
+    max-width: 100%;
     font-family: var(--font-mono);
+    background-color: var(--color-palette-10);
   }

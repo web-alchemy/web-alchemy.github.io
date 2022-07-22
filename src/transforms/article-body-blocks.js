@@ -47,5 +47,23 @@ module.exports = function (DOM, content, inputPath) {
         figureElement.appendChild(image)
       }
     }
+
+    if (child.tagName.toLowerCase() === 'iframe') {
+      const iframe = child
+      iframe.classList.remove('article__block')
+
+      const resizeElement = DOM.document.createElement('div')
+      resizeElement.classList.add('resize', 'article__block', 'article__resize')
+      const resizeElementContent = DOM.document.createElement('div')
+      resizeElementContent.classList.add('resize__content')
+      resizeElement.appendChild(resizeElementContent)
+
+      const iframeHeight = parseFloat(iframe.getAttribute('height')) ?? 'auto'
+      resizeElement.style.setProperty('--height', iframeHeight + 'px')
+
+      iframe.classList.add('resize__child')
+      iframe.replaceWith(resizeElement)
+      resizeElementContent.appendChild(iframe)
+    }
   })
 }
