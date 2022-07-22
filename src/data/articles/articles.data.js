@@ -73,7 +73,7 @@ module.exports = {
       const articleCategories = data.categories
 
       return articleCategories
-        .map((articleCategory) => categoriesCollection.mapByFileSlug[articleCategory])
+        ?.map((articleCategory) => categoriesCollection.mapByFileSlug[articleCategory])
     },
 
     ...(config.isProd ? gitDateMixin() : fsDateMixin())
