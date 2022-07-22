@@ -16,6 +16,7 @@
 @import '/components/figure/figure.css';
 @import '/components/blockquote/blockquote.css';
 @import '/components/list/list.css';
+@import '/components/resize/resize.css';
 @import '/components/article/article.css';
 @import '/components/article-preview/article-preview.css';
 @import '/components/articles-preview-list/articles-preview-list.css';
