@@ -40,7 +40,7 @@ module.exports = {
         const { populatedCategories } = article.data
 
         return populatedCategories
-          .map?.(articleCategory => ({
+          ?.map(articleCategory => ({
             id: articleCategory.data.id,
             name: articleCategory.data.name,
             link: articleCategory.data.link
