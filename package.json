@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/web-alchemy/web-alchemy#readme",
   "devDependencies": {
-    "@11ty/eleventy": "^1.0.1",
+    "@11ty/eleventy": "^2.0.0-canary.14",
     "@web-alchemy/eleventy-plugin-edgejs": "^0.0.1",
     "concurrently": "^7.3.0",
     "edge-supercharged": "^3.1.1",

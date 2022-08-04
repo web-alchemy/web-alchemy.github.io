@@ -18,6 +18,8 @@ const staticFilesExt = [
 ]
 
 module.exports = function(eleventyConfig) {
+  eleventyConfig.setQuietMode(true)
+
   // copy static assets
   gulp.src('src/public/**/*.*')
     .pipe(gulp.dest('dist'))
@@ -66,21 +68,6 @@ module.exports = function(eleventyConfig) {
       }
     }
   })
-
-  eleventyConfig.setBrowserSyncConfig({
-    server: {
-      baseDir: [
-        // './src',
-        './dist',
-      ]
-    },
-    // files: [
-    //   'src/**/*.{css,js,edge}',
-    // ],
-    watch: false
-  })
-
-  eleventyConfig.setQuietMode(true)
 
   eleventyConfig.addCollection('people', (collectionAPI) => {
     return new Collection({
