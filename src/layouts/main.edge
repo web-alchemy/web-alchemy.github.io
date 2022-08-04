@@ -6,10 +6,16 @@
   @slot('main', scope)
     @page({
       title: pageTitle,
+      description: pageDescription,
+      image: pageImage,
       lang: defaultLang,
       className: scope.classes
     })
       @slot('head')
+        <link rel="icon" href="/favicon.ico">
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" sizes="any">
+        <link rel="apple-touch-icon" href="/icon-180.png">
+        <link rel="manifest" href="/site.webmanifest">
         <link rel="stylesheet" href="{{ entry('entries/styles/main.css') }}">
         <link rel="alternate" type="application/rss+xml" href="{{ metaInfo.RSSLink }}">
       @endslot

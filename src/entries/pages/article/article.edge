@@ -5,10 +5,11 @@
   updatedAt
 })
   @slot('title')
-    {{ title }}
+    {{{ title }}}
   @endslot
 
   @slot('main')
-    {{{ content() }}}
+    {{{ excerpt }}}
+    {{{ content }}}
   @endslot
 @endarticle
