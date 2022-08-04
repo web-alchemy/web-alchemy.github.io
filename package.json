@@ -7,7 +7,8 @@
     "vite:build": "NODE_ENV=production vite build",
     "dev": "concurrently 'npm run vite:dev' 'npm run eleventy:dev'",
     "build": "npm run vite:build && npm run eleventy:build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "create-article": "node create-article.js"
   },
   "repository": {
     "type": "git",
