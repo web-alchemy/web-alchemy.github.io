@@ -1,7 +1,9 @@
 const fs = require('node:fs')
+const fsp = require('node:fs/promises')
 const path = require('node:path')
 const { execFileSync } = require('node:child_process')
 const config = require('../../../config.js')
+const { parseAsArticle, renderChildren } = require('../../core/markdown')
 
 function runCommand(command) {
   const [bin, ...args] = command.split(' ')
@@ -65,6 +67,33 @@ module.exports = {
       const { page } = data
       const { inputPath } = page
       return path.dirname(inputPath)
+    },
+
+    markdownTreeData: async (data) => {
+      const { page } = data
+      const { inputPath } = page
+
+      if (!inputPath) {
+        return
+      }
+
+      const rawContent = await fsp.readFile(inputPath, { encoding: 'utf-8' })
+      const mdData = await parseAsArticle(rawContent)
+      return mdData
+    },
+
+    markdownData: async (data) => {
+      const { markdownTreeData } = data
+
+      if (!markdownTreeData) {
+        return
+      }
+
+      return {
+        title: markdownTreeData.title && renderChildren(markdownTreeData.title.children),
+        excerpt: markdownTreeData.excerpt && renderChildren(markdownTreeData.excerpt),
+        content: markdownTreeData.content && renderChildren(markdownTreeData.content)
+      }
     },
 
     populatedCategories: (data) => {

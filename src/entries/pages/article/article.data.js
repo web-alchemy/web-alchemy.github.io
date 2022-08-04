@@ -1,4 +1,5 @@
 const formatDate = require('../../../libs/format-date')
+const { renderTreeAsText } = require('../../../core/markdown')
 
 module.exports = {
   pagination: {
@@ -6,6 +7,8 @@ module.exports = {
     size: 1,
     alias: 'article'
   },
+
+  entryType: 'article',
 
   eleventyComputed: {
     permalink: data => {
@@ -16,7 +19,19 @@ module.exports = {
 
     title: (data) => {
       const { article } = data
-      return article.data.title
+      return article.data?.markdownData?.title
+    },
+
+    textTitle: (data) => {
+      const { article } = data
+      const { markdownTreeData } = article.data
+      return renderTreeAsText(markdownTreeData?.title)
+    },
+
+    textDescription: (data) => {
+      const { article } = data
+      const { markdownTreeData } = article.data
+      return renderTreeAsText(markdownTreeData?.excerpt ?? markdownTreeData?.content)
     },
 
     updatedAt: (data) => {
@@ -31,7 +46,12 @@ module.exports = {
 
     content: (data) => {
       const { article } = data
-      return () => article.templateContent
+      return article.data?.markdownData?.content
+    },
+
+    excerpt: (data) => {
+      const { article } = data
+      return article.data?.markdownData?.excerpt
     },
 
     categories: (data) => {

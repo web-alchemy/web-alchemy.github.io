@@ -18,8 +18,6 @@ const staticFilesExt = [
 ]
 
 module.exports = function(eleventyConfig) {
-  eleventyConfig.setWatchJavaScriptDependencies(false)
-
   // copy static assets
   gulp.src('src/public/**/*.*')
     .pipe(gulp.dest('dist'))

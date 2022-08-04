@@ -136,16 +136,34 @@ const components = {
   }
 }
 
-function renderChildren(children) {
+const textComponents = new Proxy({}, {
+  get() {
+    return (child) => {
+      if (child.children) {
+        return renderChildren(child.children, textComponents)
+      } else if (typeof child.value !== 'undefined') {
+        return child.value
+      } else {
+        return ''
+      }
+    }
+  },
+
+  has() {
+    return true
+  }
+})
+
+function renderChildren(children, mdComponents = components) {
   return children
     .filter((child) => {
-      const hasType = child.type in components
+      const hasType = child.type in mdComponents
       if (!hasType) {
         console.warn(`Markdown components don't have the \`${child.type}\` type`)
       }
       return hasType
     })
-    .map((child) => components[child.type](child))
+    .map((child) => mdComponents[child.type](child))
     .join('')
 }
 
@@ -165,12 +183,52 @@ async function parse(content) {
     .parse(content)
 }
 
+function renderTree(tree, mdComponents = components) {
+  if (tree.type) {
+    return mdComponents[tree.type](tree)
+  } else if (Array.isArray(tree)) {
+    return renderChildren(tree, mdComponents)
+  } else {
+    throw new Error('Invalid structure of markdown tree')
+  }
+}
+
+function renderTreeAsText(tree) {
+  return renderTree(tree, textComponents)
+}
+
+async function parseAsArticle(content) {
+  const tree = await parse(content)
+  const { children } = tree
+  const firstChild = children[0]
+  const hasTitle = firstChild.type === 'heading' && firstChild?.depth === 1
+  const hasExcerpt = hasTitle && children[1].type === 'thematicBreak'
+  const excerptElements = []
+  let index = 1
+  if (hasExcerpt) {
+    while (children[++index]?.type !== 'thematicBreak') {
+      excerptElements.push(children[index])
+    }
+    index++
+  }
+  const restChildren = children.slice(index)
+  return {
+    ...(hasTitle && { title: firstChild }),
+    excerpt: excerptElements,
+    content: restChildren
+  }
+}
+
 async function render(content) {
   const tree = await parse(content)
-  return components.root(tree)
+  return renderTree(tree)
 }
 
 module.exports = {
   parse,
-  render
+  parseAsArticle,
+  render,
+  renderTree,
+  renderTreeAsText,
+  renderChildren
 }
