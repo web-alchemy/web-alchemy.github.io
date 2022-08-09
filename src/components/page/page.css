@@ -49,3 +49,10 @@
     grid-area: footer;
     margin-block-start: var(--_page-margin);
   }
+
+  @supports (scrollbar-gutter: stable) {
+    .page {
+      overflow-y: auto;
+      scrollbar-gutter: stable;
+    }
+  }
